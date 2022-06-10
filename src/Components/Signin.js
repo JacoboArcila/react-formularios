@@ -1,53 +1,82 @@
 import { Component } from "react";
-
+import { ContainerForm, InputForm, H1Form, ButtonForm } from "../Styles";
+import Swal from "sweetalert2";
 class Signin extends Component {
-    constructor() {
-        super();
-        this.state = {
-            sigIn: {
-                email: "",
-                password: ""
-            },
-            show: false
-        }
-    }
+  constructor() {
+    super();
+    this.state = {
+      sigIn: {
+        email: "l",
+        password: "l",
+      },
+      show: false,
+    };
+  }
 
-    onSubmitHandler = (e) => {
-        console.log(e);
-        e.preventDefault();
-        console.log(this.state)
-        if (this.state.signIn.email === this.props.userInfo.email && this.state.signIn.password === this.props.userInfo.password) {
-            this.setState({show: true});
-        }
-    }
+  onSubmitHandler = (e) => {
+    console.log(e);
+    e.preventDefault();
+    console.log(this.state);
+    if (
+      this.state.sigIn.email === this.props.userInfo.email &&
+      this.state.sigIn.password === this.props.userInfo.password
+    ) {
+      this.setState({ show: true });
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
 
-    render() {
-        return (
-            <div>
-            {
-                this.state.show ?
-                    <div>
-                        <h1>Usuario Registrado</h1>
-                    </div>
-                    :
-                    <form onSubmit={(e)=> this.onSubmitHandler(e)}>
-                        <input
-                        placeholder='email'
-                        type="email"
-                        onChange={(e)=> this.setState({signIn: { email: e.target.value}})}
-                        />
-                        <input
-                        placeholder='password'
-                        type="password"
-                        onChange={(e)=> this.setState({signIn: { password: e.target.value}})}
-                        />
-                            <button type="submit">Send</button>
-                    </form>
-                } 
-        
-            </div>
-        )
+      Toast.fire({
+        icon: "success",
+        title: "Signed in successfully",
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Failed to login!",
+      });
     }
+  };
+
+  render() {
+    return (
+      <div>
+        <div>
+          <H1Form>Sign in</H1Form>
+          <ContainerForm onSubmit={(e) => this.onSubmitHandler(e)}>
+            <InputForm
+              placeholder="email"
+              type="email"
+              onChange={(e) =>
+                this.setState({
+                  sigIn: { ...this.state.sigIn, email: e.target.value },
+                })
+              }
+            />
+            <InputForm
+              placeholder="password"
+              type="password"
+              onChange={(e) =>
+                this.setState({
+                  sigIn: { ...this.state.sigIn, password: e.target.value },
+                })
+              }
+            />
+            <ButtonForm type="submit">Send</ButtonForm>
+          </ContainerForm>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Signin;

@@ -2,16 +2,17 @@ import {Component} from 'react';
 import './App.css';
 import Signin from './Components/Signin';
 import Signup from './Components/Signup';
+import {Navigation, ContainerNavigation, TitleNavigation ,ContainerHome, H1Home } from './Styles';
 
 class Home extends Component {
   render() {
     return (
-      <div>
-        <h1>Welcome</h1>
+      <ContainerHome>
+        <H1Home>Welcome</H1Home>
         <p>Welcome to our site.</p>
         <p>Please, sign in to see all our events.</p>
         <p>Sign up if you don't have an account.</p>
-      </div>
+      </ContainerHome>
     )
   }
 }
@@ -43,11 +44,12 @@ class App extends Component {
   render() {
     return (
       <div>
-            <div>
-                <button onClick={()=> this.setState({view: <Home/>})}>Home</button>
-                <button onClick={()=> this.handlerView("sign_up")}>Sign Up</button>
-                <button onClick={()=> this.handlerView("sign_in")}>Sign In</button>
-            </div>
+            <ContainerNavigation>
+                <TitleNavigation>Formularios</TitleNavigation>
+                <Navigation onClick={()=> this.setState({view: <Home/>})}>Home</Navigation>
+                <Navigation onClick={()=> this.handlerView("sign_up")}>Sign Up</Navigation>
+                <Navigation onClick={()=> this.handlerView("sign_in")}>Sign In</Navigation>
+            </ContainerNavigation>
             <div>
                 {
                     this.state.view
