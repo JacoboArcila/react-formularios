@@ -48,7 +48,7 @@ class Signup extends Component {
 
       Toast.fire({
         icon: "success",
-        title: "Sign up in successfully",
+        title: "Successfully registered",
       });
     }
   };
