@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.4fbfd344.css",
-    "main.js": "/Portfolio/static/js/main.a36b00eb.js",
-    "index.html": "/Portfolio/index.html",
-    "main.4fbfd344.css.map": "/Portfolio/static/css/main.4fbfd344.css.map",
-    "main.a36b00eb.js.map": "/Portfolio/static/js/main.a36b00eb.js.map"
+    "main.css": "/react-formularios/static/css/main.4fbfd344.css",
+    "main.js": "/react-formularios/static/js/main.06d8e994.js",
+    "index.html": "/react-formularios/index.html",
+    "main.4fbfd344.css.map": "/react-formularios/static/css/main.4fbfd344.css.map",
+    "main.06d8e994.js.map": "/react-formularios/static/js/main.06d8e994.js.map"
   },
   "entrypoints": [
     "static/css/main.4fbfd344.css",
-    "static/js/main.a36b00eb.js"
+    "static/js/main.06d8e994.js"
   ]
 }
